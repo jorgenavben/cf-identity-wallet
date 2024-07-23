@@ -14,6 +14,7 @@
     "wdio:android:s23ultra": "npx wdio tests/config/wdio.emu.android.galaxyS23Ultra.config.ts --watch",
     "wdio:ios:15pro": "npx wdio tests/config/wdio.sim.ios.iphone15Pro.config.ts --watch",
     "wdio:ios:15promax": "npx wdio tests/config/wdio.sim.ios.iphone15ProMax.config.ts --watch",
+    "wdio:ios:15promax:ci": "npx wdio tests/config/wdio.sim.ios.iphone15ProMaxCI.config.ts --watch",
     "prepare": "husky install"
   },
   "dependencies": {
