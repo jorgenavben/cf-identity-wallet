@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: 🦾 Create .env file
+        run: |
+          echo "APP_PATH=/Users/runner/Library/Developer/Xcode/DerivedData/App-blxepnvneboqwlgarzrdhnpgxqiw/Build/Products/Debug-iphonesimulator/App.app" > .env
 
       - name: Setup node
         uses: actions/setup-node@v4
