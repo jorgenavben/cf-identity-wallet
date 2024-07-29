@@ -24,24 +24,13 @@ jobs:
         run: npm run build:cap
 
       - name: 🔨 Build app for iOS simulator
-        run: xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug -sdk iphonesimulator17.5 CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug -sdk iphonesimulator17.0 CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
       - name: 📱 List iOS simulator
         run: xcrun simctl list
 
       - name: 📱 Start iOS simulator
         run: open -a Simulator.app &
-
-      - name: debugging
-        run: |
-          ps ax
-          echo @@@@@@@@@@@@@@@
-          ps ax | grep Simulator
-          echo @@@@@@@@@@@@@@@
-          sudo ifconfig -a 
-          sleep 30
-          sudo lsof -ni -P | grep LISTEN | grep :$PORT
-          while ! nc -z localhost 4723; do sleep 1; sudo lsof -ni -P | grep LISTEN; done
 
       - name: 🏃🏼 Run tests for iOS simulator
         run: npm run wdio:ios:15promax:ci -- --spec ./tests/features/onboarding.feature
