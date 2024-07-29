@@ -34,6 +34,7 @@ jobs:
 
       - name: debugging
         run: |
+          sleep 60
           sudo lsof -ni -P | grep LISTEN | grep :$PORT
 
 #      - name: 🏃🏼 Run tests for iOS simulator
