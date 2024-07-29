@@ -32,5 +32,9 @@ jobs:
       - name: 📱 Start iOS simulator
         run: open -a Simulator.app &
 
-      - name: 🏃🏼 Run tests for iOS simulator
-        run: npm run wdio:ios:15promax:ci -- --spec ./tests/features/onboarding.feature
+      - name: debugging
+        run: |
+          sudo lsof -ni -P | grep LISTEN | grep :$PORT
+
+#      - name: 🏃🏼 Run tests for iOS simulator
+#        run: npm run wdio:ios:15promax:ci -- --spec ./tests/features/onboarding.feature
