@@ -34,6 +34,11 @@ jobs:
 
       - name: debugging
         run: |
+          ps ax
+          echo @@@@@@@@@@@@@@@
+          ps ax | grep Simulator
+          echo @@@@@@@@@@@@@@@
+          sudo ifconfig -a 
           sleep 60
           sudo lsof -ni -P | grep LISTEN | grep :$PORT
 
