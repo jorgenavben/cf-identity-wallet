@@ -4,7 +4,7 @@ on:
 jobs:
   mobile-e2e-tests:
     timeout-minutes: 60
-    runs-on: macos-13-xlarge
+    runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
