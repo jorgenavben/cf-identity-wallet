@@ -67,6 +67,9 @@ jest.mock("../../../../../../core/agent/agent", () => ({
           Promise.resolve(credsFixAcdc[0])
         ),
       },
+      connections: {
+        getConnectionShortDetailById: jest.fn(),
+      },
     },
   },
 }));
@@ -74,8 +77,11 @@ jest.mock("../../../../../../core/agent/agent", () => ({
 jest.mock("@ionic/react", () => ({
   ...jest.requireActual("@ionic/react"),
   isPlatform: () => true,
-  IonModal: ({ children, isOpen, ...props }: any) =>
-    isOpen ? <div {...props}>{children}</div> : null,
+  IonModal: ({ children, isOpen, ...props }: any) => {
+    return isOpen ? (
+      <div data-testid={props["data-testid"]}>{children}</div>
+    ) : null;
+  },
 }));
 
 const mockStore = configureStore();

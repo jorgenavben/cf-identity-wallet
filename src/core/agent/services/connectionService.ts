@@ -43,7 +43,7 @@ class ConnectionService extends AgentService {
     connectionStorage: ConnectionStorage,
     credentialStorage: CredentialStorage,
     operationPendingStorage: OperationPendingStorage,
-    identifierStorage: IdentifierStorage,
+    identifierStorage: IdentifierStorage
   ) {
     super(agentServiceProps);
     this.connectionStorage = connectionStorage;
@@ -163,6 +163,7 @@ class ConnectionService extends AgentService {
           connectionId,
           status: ConnectionStatus.PENDING,
           url,
+          label: alias,
         },
       });
 
@@ -203,7 +204,7 @@ class ConnectionService extends AgentService {
       pendingDeletion: false,
     });
     for (const connection of associatedContacts) {
-      connectionsDetails.push(await this.getConnectionShortDetails(connection));
+      connectionsDetails.push(this.getConnectionShortDetails(connection));
     }
     return connectionsDetails;
   }
